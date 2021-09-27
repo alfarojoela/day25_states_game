@@ -32,15 +32,19 @@ while len(guessed_states) < 50:
         # create a turtle to write the name of the state at the state's x and y coords
 
     if answer_state == "Exit":
-        missed_states = []
-
-        for state in all_states:
-            if state not in guessed_states:
-                missed_states.append(state)
+        # missed_states = []
+        #
+        # for state in all_states:
+        #     if state not in guessed_states:
+        #         missed_states.append(state)
+        ########################################################################
+        #USING LIST COMPREHENSION INSTEAD OF FOR LOOP:
+        #missed_states = [new_item for item in list if test]
+        missed_states = [state for state in all_states if state not in guessed_states]
+        ########################################################################
         #print(missed_states)
         new_data = pandas.DataFrame(missed_states)
         new_data.to_csv("states_to_learn.csv")
-
         break
 
 
